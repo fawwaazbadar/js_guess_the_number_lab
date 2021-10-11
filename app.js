@@ -6,30 +6,30 @@ const game = {
   prevGuesses: [],
 
   getGuess: function () {
-    let playerGuess = prompt(`Enter a guess between ${this.smallestNum} and ${this.biggestNum}`)
-    let parseNum = parseInt(playerGuess)
-    return parseNum
+    let guess = prompt(`Enter a guess between ${this.smallestNum} and ${this.biggestNum}`)
+    let parsedNumber = parseInt(guess)
+    return parsedNumber
   },
   play: function() {
     this.secretNum = Math.floor(Math.random() * (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
-    let playerAns
+    let playerAnswer
     console.log(this.secretNum)
-    console.log(playerAns)
-    while( playerAns !== this.secretNum){
-      playerAns = this.getGuess()
-      this.prevGuesses.push(playerAns)  
-      this.render(playerAns)
+    console.log(playerAnswer)
+    while( playerAnswer !== this.secretNum){
+      playerAnswer = this.getGuess()
+      this.prevGuesses.push(playerAnswer)  
+      this.render(playerAnswer)
     }
   },
-  render : function (playerAns)   { 
-    if(playerAns >= 0 && playerAns <= 100){
-      if (playerAns === this.secretNum) {
+  render : function (playerAnswer)   { 
+    if(playerAnswer >= 0 && playerAnswer <= 100){
+      if (playerAnswer === this.secretNum) {
         alert(`Congrats! You guessed the number in ${this.prevGuesses.length} guesses!`)
       } 
-      else if (playerAns > this.secretNum){
+      else if (playerAnswer > this.secretNum){
         alert(`Your guess is too high Previous guesses: ${this.prevGuesses.join(`, `)}`)
       } 
-      else if (playerAns < this.secretNum){
+      else if (playerAnswer < this.secretNum){
         alert(`Your guess is too low Previous guesses: ${this.prevGuesses.join(`, `)}`)
       }
     }
